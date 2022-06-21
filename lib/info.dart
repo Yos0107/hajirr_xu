@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hajirr_xu/login.dart';
-import 'package:hajirr_xu/student.dart';
 
 class info extends StatefulWidget {
   const info({Key? key}) : super(key: key);

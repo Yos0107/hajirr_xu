@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "479730647392",
+    "project_id": "hajirr-xu",
+    "storage_bucket": "hajirr-xu.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:479730647392:android:48d64150dd5aaad6015e05",
+        "android_client_info": {
+          "package_name": "com.example.hajirr_xu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "479730647392-kb1820nncnacarghlbkskbjaieob350d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8P-LhhrYFq9fRHTU8Y1quFHLDkdac0ls"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "479730647392-kb1820nncnacarghlbkskbjaieob350d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

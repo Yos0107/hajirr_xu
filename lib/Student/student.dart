@@ -1,87 +1,49 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:hajirr_xu/login.dart';
-import 'package:hajirr_xu/info.dart';
+import 'package:hajirr_xu/drawer.dart/studentDrawer.dart';
+
 import 'package:table_calendar/table_calendar.dart';
 
-class studentdashboard extends StatefulWidget {
-  const studentdashboard({Key? key}) : super(key: key);
+class StudentDashboard extends StatefulWidget {
+  const StudentDashboard({Key? key}) : super(key: key);
 
   @override
-  State<studentdashboard> createState() => _studentdashboardState();
+  State<StudentDashboard> createState() => dashboard();
 }
 
-class _studentashboardState extends State<studentdashboard> {
+class dashboard extends State<StudentDashboard> {
+//doc IDs
+  List<String> docIDs = [];
+//get docIDs
+  // Future getDocId() async {
+  //   await FirebaseFirestore.instance
+  //       .collection('users')
+  //       .get()
+  //       .then((snapshot) => snapshot.docs.forEach((document) {
+  //             print(document.reference);
+  //             docIDs.add(document.reference.id);
+  //           })
+  //           );
+  // }
+
+
   @override
-  Widget build(BuildContext context) {
-    return Container();
+  void initState() {
+    // getDocId();
+    super.initState();
   }
-}
 
-class _studentdashboardState extends State<studentdashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          // automaticallyImplyLeading: false,
           centerTitle: true,
           title: Text('Students Dashboard'),
           backgroundColor: Color(0xFF14BDEB),
         ),
         drawer: Drawer(
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: <Widget>[
-              const UserAccountsDrawerHeader(
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage('assets/images/gradient_drawer.jpg'),
-                        fit: BoxFit.cover)),
-                currentAccountPicture: CircleAvatar(
-                  child: Text(
-                    'YT',
-                    style: TextStyle(color: Colors.white, fontSize: 18),
-                  ),
-                  backgroundColor: Color(0xFF14BDEB),
-                ),
-                accountName: Text(
-                  'Yoseph Tamang',
-                  style: TextStyle(color: Colors.white, fontSize: 16),
-                ),
-                accountEmail: Text(
-                  'tamang@gmail.com',
-                  style: TextStyle(color: Colors.white, fontSize: 14),
-                ),
-              ),
-              ListTile(
-                leading: Icon(
-                  Icons.list_rounded,
-                  color: Color(0xFF081C15),
-                ),
-                title: Text(
-                  'Attendance History',
-                  style: TextStyle(color: Color(0xFF081C15), fontSize: 16),
-                ),
-                onTap: () => print('Hello'),
-              ),
-              ListTile(
-                leading: Icon(Icons.info_outline, color: Color(0xFF081C15)),
-                title: Text('Info',
-                    style: TextStyle(color: Color(0xFF081C15), fontSize: 16)),
-                onTap: () {
-                  Navigator.pushNamed(context, 'info');
-                },
-              ),
-              ListTile(
-                leading: Icon(Icons.login, color: Color(0xFF081C15)),
-                title: Text(
-                  'Log Out',
-                  style: TextStyle(color: Color(0xFF081C15), fontSize: 16),
-                ),
-                onTap: () {
-                  Navigator.pushNamed(context, 'login');
-                },
-              ),
-            ],
-          ),
+          child: studentDrawer(),
         ),
         body: Column(
           children: [
@@ -107,7 +69,23 @@ class _studentdashboardState extends State<studentdashboard> {
             ),
             ElevatedButton.icon(
                 onPressed: () {
-                  Navigator.pushNamed(context, 'admin');
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return Container(
+                          child: AlertDialog(
+                            backgroundColor: Colors.green[400],
+                            contentPadding: EdgeInsets.fromLTRB(10, 5, 10, 0),
+                            title: Text(
+                              'Your attendance has been recorded successfully',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        );
+                      });
                 },
                 icon: Icon(
                   Icons.arrow_right,
@@ -129,7 +107,7 @@ class _studentdashboardState extends State<studentdashboard> {
             ),
             ElevatedButton.icon(
                 onPressed: () {
-                  Navigator.pushNamed(context, 'admin');
+                  Navigator.pushNamed(context, 'history');
                 },
                 icon: Icon(
                   Icons.refresh,
