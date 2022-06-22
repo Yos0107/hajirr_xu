@@ -8,7 +8,7 @@ class AddStudentAlertDialog extends StatelessWidget {
     return Container(
       child: AlertDialog(
         backgroundColor: Color(0xFF22223B),
-        contentPadding: EdgeInsets.fromLTRB(24, 5, 24, 10),
+        contentPadding: EdgeInsets.fromLTRB(15, 10, 15, 10),
         title: Text(
           'Add Students',
           style: TextStyle(
@@ -36,6 +36,21 @@ class AddStudentAlertDialog extends StatelessWidget {
                 fillColor: Color(0xFFFFFFFC),
                 filled: true,
                 hintText: 'Email',
+                hintStyle: TextStyle(
+                    fontWeight: FontWeight.w400,
+                    fontSize: 18.0,
+                    color: Color(0xFF081C15)),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            TextField(
+              obscureText: true,
+              decoration: InputDecoration(
+                fillColor: Color(0xFFFFFFFC),
+                filled: true,
+                hintText: 'Password',
                 hintStyle: TextStyle(
                     fontWeight: FontWeight.w400,
                     fontSize: 18.0,

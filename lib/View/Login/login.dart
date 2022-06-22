@@ -123,8 +123,7 @@ class _MyLoginState extends State<MyLogin> {
                                     password: passwordController.text);
 
                             email = usercredential.user!.email.toString();
-                            fullName = fullName.toString();
-
+                            print(email);
                             print(usercredential);
                             usercredential.user!.emailVerified.toString();
                             ScaffoldMessenger.of(context).showSnackBar(
