@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hajirr_xu/addRemoveStudents.dart/addStudent.dart';
 import 'package:hajirr_xu/addRemoveStudents.dart/removeStudents.dart';
+import 'package:hajirr_xu/drawer.dart/adminDrawer.dart';
 
 class admindashboard extends StatefulWidget {
   const admindashboard({Key? key}) : super(key: key);
@@ -22,13 +24,14 @@ class _admindashboardState extends State<admindashboard> {
     return Scaffold(
       appBar: new AppBar(
         centerTitle: true,
-        automaticallyImplyLeading: false,
+        // automaticallyImplyLeading: false,
         title: Text(
           'Admin Dashboard',
           style: TextStyle(fontSize: 24),
         ),
         backgroundColor: Color(0xFF14BDEB),
       ),
+      drawer: Drawer(child: adminDrawer()),
       backgroundColor: Color(0xFF22223B),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 25),
@@ -71,11 +74,7 @@ class _admindashboardState extends State<admindashboard> {
                   primary: Color(0xFF4F5D75),
                 ),
                 onPressed: () {
-                  showDialog(
-                      context: context,
-                      builder: (context) {
-                        return removeStudents();
-                      });
+                  Get.toNamed('/removeStudents');
                 },
                 child: Column(
                   mainAxisSize: MainAxisSize.min,

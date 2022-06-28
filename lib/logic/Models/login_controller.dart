@@ -8,7 +8,7 @@ String email = "".obs as String;
 String loggedInEmail = "".obs as String;
 String loggedInUserName = "".obs as String;
 
-var listOfStudents = [].obs;
+
 
 
 
