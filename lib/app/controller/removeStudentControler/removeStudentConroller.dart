@@ -14,9 +14,10 @@ class RemoveStudentController extends GetxController {
     String nam;
     await _firestore.collection('users').get().then((value) {
       value.docs.forEach((element) => {
-            nam = element['full name'].toString(),
-            listOfStudents.add(nam),
-            print(element['full name'])
+            // print(element.id),
+            // nam = element['full name'].toString(),
+            listOfStudents.add(element),
+            print(element.id)
           });
 
       print("user matched");

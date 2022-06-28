@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:hajirr_xu/Student/student.dart';
 import 'package:hajirr_xu/logic/Models/login_controller.dart';
 
 class MyLogin extends StatefulWidget {
@@ -126,15 +128,24 @@ class _MyLoginState extends State<MyLogin> {
                             print(email);
                             print(usercredential);
                             usercredential.user!.emailVerified.toString();
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content:
-                                    Text('Logged in as ' + email.toString()),
-                                backgroundColor: Colors.green,
-                                behavior: SnackBarBehavior.floating,
-                              ),
+                            Get.snackbar(
+                              "Welcome to Hajirr Xu",
+                              'Logged in as ' + email.toString(),
+                              colorText: Colors.white,
+                              icon: Icon(Icons.person, color: Colors.white),
+                              snackPosition: SnackPosition.BOTTOM,
+                              backgroundColor: Colors.green,
                             );
-                            Navigator.pushNamed(context, 'student');
+                            // ScaffoldMessenger.of(context).showSnackBar(
+                            //   SnackBar(
+                            //     content:
+                            //         Text('Logged in as ' + email.toString()),
+                            //     backgroundColor: Colors.green,
+                            //     behavior: SnackBarBehavior.floating,
+                            //   ),
+                            // );
+                            Get.to(StudentDashboard());
+                            // Navigator.pushNamed(context, 'student');
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(

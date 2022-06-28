@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:get/get.dart';
 import 'package:hajirr_xu/logic/Models/login_controller.dart';
 
 class MyRegister extends StatefulWidget {
@@ -165,14 +166,22 @@ class _MyRegisterState extends State<MyRegister> {
                                         password: passwordController.text);
                                 // If the form is valid, display a snackbar. In the real world,
                                 // you'd often call a server or save the information in a database.
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                    content: Text(
-                                        'Account has been created Successfully'),
-                                    backgroundColor: Colors.green,
-                                    behavior: SnackBarBehavior.floating,
-                                  ),
+                                Get.snackbar(
+                                  "Your Account has been created successfully",
+                                  ' Now you can take attendance',
+                                  colorText: Colors.white,
+                                  icon: Icon(Icons.person, color: Colors.white),
+                                  snackPosition: SnackPosition.BOTTOM,
+                                  backgroundColor: Colors.green,
                                 );
+                                // ScaffoldMessenger.of(context).showSnackBar(
+                                //   const SnackBar(
+                                //     content: Text(
+                                //         'Account has been created Successfully'),
+                                //     backgroundColor: Colors.green,
+                                //     behavior: SnackBarBehavior.floating,
+                                //   ),
+                                // );
                                 addUserDetails(
                                   fullName: _fullNameController.text.trim(),
                                   section: _sectionController.text.trim(),
