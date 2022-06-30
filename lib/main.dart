@@ -7,7 +7,6 @@ import 'package:hajirr_xu/View/Login/register.dart';
 import 'package:hajirr_xu/app/bindingss/removeStudentBinding.dart';
 import 'package:hajirr_xu/info.dart';
 import 'package:hajirr_xu/logic/Models/mysql.dart';
-import 'package:hajirr_xu/newmain.dart';
 import 'View/Admin/admin.dart';
 import 'View/Login/forgot.dart';
 import 'Student/student.dart';

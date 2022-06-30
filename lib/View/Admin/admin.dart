@@ -1,11 +1,15 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hajirr_xu/addRemoveStudents.dart/addStudent.dart';
-import 'package:hajirr_xu/addRemoveStudents.dart/removeStudents.dart';
+
 import 'package:hajirr_xu/drawer.dart/adminDrawer.dart';
 
 class admindashboard extends StatefulWidget {
   const admindashboard({Key? key}) : super(key: key);
+
+  // get isStarted => false;
 
   @override
   State<admindashboard> createState() => _admindashboardState();
@@ -19,6 +23,8 @@ class _admindashboard extends StatefulWidget {
 }
 
 class _admindashboardState extends State<admindashboard> {
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -97,35 +103,18 @@ class _admindashboardState extends State<admindashboard> {
                   primary: Color(0xFF4F5D75),
                 ),
                 onPressed: () {
-                  showDialog(
-                      context: context,
-                      builder: (context) {
-                        return Container(
-                          child: AlertDialog(
-                            backgroundColor: Colors.green[400],
-                            title: Text(
-                              'Students Can Check In',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            actions: [
-                              TextButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  child: Text(
-                                    'Ok',
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white),
-                                  ))
-                            ],
-                          ),
-                        );
-                      });
+                  approveAttendance(
+                    date: DateTime.now(),
+                    startedAttendance: true,
+                  );
+                  Get.snackbar(
+                    "Attedance has been started",
+                    'Students can check in now ',
+                    colorText: Colors.white,
+                    icon: Icon(Icons.person, color: Colors.white),
+                    // snackPosition: SnackPosition.BOTTOM,
+                    backgroundColor: Colors.green,
+                  );
                 },
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -277,5 +266,15 @@ class _admindashboardState extends State<admindashboard> {
         ),
       ),
     );
+  }
+
+  Future approveAttendance({
+    bool startedAttendance = false,
+    required DateTime date,
+  }) async {
+    await FirebaseFirestore.instance.collection('approveAttendance').add({
+      'date': date,
+      'takeAttendance': startedAttendance,
+    });
   }
 }

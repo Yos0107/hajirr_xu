@@ -1,5 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:hajirr_xu/View/Admin/admin.dart';
+import 'package:hajirr_xu/app/controller/dailyAttendanceController.dart';
+import 'package:hajirr_xu/app/controller/removeStudentControler/removeStudentConroller.dart';
 import 'package:hajirr_xu/drawer.dart/studentDrawer.dart';
 
 import 'package:table_calendar/table_calendar.dart';
@@ -12,6 +16,8 @@ class StudentDashboard extends StatefulWidget {
 }
 
 class dashboard extends State<StudentDashboard> {
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+
 //doc IDs
   List<String> docIDs = [];
 //get docIDs
@@ -25,7 +31,6 @@ class dashboard extends State<StudentDashboard> {
   //           })
   //           );
   // }
-
 
   @override
   void initState() {
@@ -68,25 +73,8 @@ class dashboard extends State<StudentDashboard> {
               height: 50,
             ),
             ElevatedButton.icon(
-                onPressed: () {
-                  showDialog(
-                      context: context,
-                      builder: (context) {
-                        return Container(
-                          child: AlertDialog(
-                            backgroundColor: Colors.green[400],
-                            contentPadding: EdgeInsets.fromLTRB(10, 5, 10, 0),
-                            title: Text(
-                              'Your attendance has been recorded successfully',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        );
-                      });
-                },
+                // onPressed: admindashboard().isStarted ? add() : () {},
+                onPressed: () {},
                 icon: Icon(
                   Icons.arrow_right,
                   color: Colors.white,
@@ -152,4 +140,18 @@ class dashboard extends State<StudentDashboard> {
           ],
         ));
   }
+}
+
+Future presentStudents({
+  required Timestamp timestamp,
+  required bool ispresent,
+  required DocumentReference userId,
+  required User userName,
+}) async {
+  await FirebaseFirestore.instance.collection('attendance').add({
+    'isPresent': false,
+    'loggedAt': timestamp,
+    'userName': String,
+    'userId': DocumentReference,
+  });
 }

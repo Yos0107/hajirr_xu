@@ -30,15 +30,15 @@ dependencies:
   binding: ^1.0.0
   cloud_firestore: ^3.1.13
   cupertino_icons: ^1.0.2
-
   firebase_auth: null
-  firebase_core: 
+  firebase_core: null
   flutter:
     sdk: flutter
   flutter_staggered_grid_view: null
   get: null
   getxbottombar: null
   http: ^0.13.4
+  intl: ^0.17.0
   mysql1: null
   table_calendar: null
 
