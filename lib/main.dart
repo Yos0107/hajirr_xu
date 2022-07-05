@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:hajirr_xu/Student/attendanceHistory.dart';
 import 'package:hajirr_xu/View/Login/login.dart';
 import 'package:hajirr_xu/View/Login/register.dart';
+import 'package:hajirr_xu/app/bindingss/dailyAttendanceBindings.dart';
 import 'package:hajirr_xu/app/bindingss/removeStudentBinding.dart';
 import 'package:hajirr_xu/info.dart';
 import 'package:hajirr_xu/logic/Models/mysql.dart';
@@ -33,7 +34,10 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/login', page: () => MyLogin()),
         GetPage(name: '/register', page: () => MyRegister()),
         GetPage(name: '/forgot', page: () => ForgotPassword()),
-        GetPage(name: '/student', page: () => StudentDashboard()),
+        GetPage(
+            name: '/student',
+            page: () => StudentDashBoard(),
+            bindings: [DailyAttendanceBinding()]),
         GetPage(name: '/admin', page: () => admindashboard()),
         GetPage(name: '/info', page: () => info()),
         GetPage(name: '/history', page: () => AttendanceHistory()),

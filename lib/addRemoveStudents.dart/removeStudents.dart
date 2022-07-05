@@ -28,7 +28,7 @@ class RemoveStudents extends StatelessWidget {
       //     title: Text(removeStudentController.listOfStudents[index]),
       //   ),
 
-      // )
+      // )  
       // )
       body: Obx(
         () => ListView.separated(

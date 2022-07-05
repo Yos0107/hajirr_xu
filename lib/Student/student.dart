@@ -1,48 +1,27 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:hajirr_xu/View/Admin/admin.dart';
+import 'package:get/get.dart';
 import 'package:hajirr_xu/app/controller/dailyAttendanceController.dart';
-import 'package:hajirr_xu/app/controller/removeStudentControler/removeStudentConroller.dart';
 import 'package:hajirr_xu/drawer.dart/studentDrawer.dart';
-
 import 'package:table_calendar/table_calendar.dart';
 
-class StudentDashboard extends StatefulWidget {
-  const StudentDashboard({Key? key}) : super(key: key);
+class StudentDashBoard extends StatelessWidget {
+  StudentDashBoard({Key? key}) : super(key: key);
 
-  @override
-  State<StudentDashboard> createState() => dashboard();
-}
-
-class dashboard extends State<StudentDashboard> {
-  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
-
-//doc IDs
-  List<String> docIDs = [];
-//get docIDs
-  // Future getDocId() async {
-  //   await FirebaseFirestore.instance
-  //       .collection('users')
-  //       .get()
-  //       .then((snapshot) => snapshot.docs.forEach((document) {
-  //             print(document.reference);
-  //             docIDs.add(document.reference.id);
-  //           })
-  //           );
-  // }
-
-  @override
-  void initState() {
-    // getDocId();
-    super.initState();
+  final dailyAttendanceController =
+      Get.find<GenerateTodaysAttendanceController>();
+  printF() {
+    print(dailyAttendanceController.readyForAttendance);
   }
+
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
+    dailyAttendanceController.readyforAttendance();
+    printF();
     return Scaffold(
         appBar: AppBar(
-          // automaticallyImplyLeading: false,
           centerTitle: true,
           title: Text('Students Dashboard'),
           backgroundColor: Color(0xFF14BDEB),
@@ -70,11 +49,14 @@ class dashboard extends State<StudentDashboard> {
                           fontWeight: FontWeight.w800),
                     ))),
             SizedBox(
-              height: 50,
+              height: 30,
             ),
             ElevatedButton.icon(
-                // onPressed: admindashboard().isStarted ? add() : () {},
-                onPressed: () {},
+                onPressed: () {
+                  // dailyAttendanceController.readyForAttendance();
+
+                  // print(dailyAttendanceController.readyForAttendance);
+                },
                 icon: Icon(
                   Icons.arrow_right,
                   color: Colors.white,
@@ -134,24 +116,7 @@ class dashboard extends State<StudentDashboard> {
                     minimumSize: Size(350, 45),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20)))),
-            SizedBox(
-              height: 30,
-            ),
           ],
         ));
   }
-}
-
-Future presentStudents({
-  required Timestamp timestamp,
-  required bool ispresent,
-  required DocumentReference userId,
-  required User userName,
-}) async {
-  await FirebaseFirestore.instance.collection('attendance').add({
-    'isPresent': false,
-    'loggedAt': timestamp,
-    'userName': String,
-    'userId': DocumentReference,
-  });
 }

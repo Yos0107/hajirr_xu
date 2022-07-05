@@ -144,7 +144,7 @@ class _MyLoginState extends State<MyLogin> {
                             //     behavior: SnackBarBehavior.floating,
                             //   ),
                             // );
-                            Get.to(StudentDashboard());
+                            Get.toNamed('/student');
                             // Navigator.pushNamed(context, 'student');
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(

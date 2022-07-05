@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 class RemoveStudentController extends GetxController {
   var listOfStudents = [].obs;
+
   void onInit() {
     super.onInit();
     listOfStudents();
@@ -11,7 +12,7 @@ class RemoveStudentController extends GetxController {
   listOfStudent() async {
     print("user /////////////////////////");
     FirebaseFirestore _firestore = FirebaseFirestore.instance;
-    String nam;
+    // String nam;
     await _firestore.collection('users').get().then((value) {
       value.docs.forEach((element) => {
             // print(element.id),

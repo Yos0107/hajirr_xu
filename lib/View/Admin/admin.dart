@@ -1,10 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hajirr_xu/addRemoveStudents.dart/addStudent.dart';
 
 import 'package:hajirr_xu/drawer.dart/adminDrawer.dart';
+import 'package:intl/intl.dart';
 
 class admindashboard extends StatefulWidget {
   const admindashboard({Key? key}) : super(key: key);
@@ -104,16 +106,15 @@ class _admindashboardState extends State<admindashboard> {
                 ),
                 onPressed: () {
                   approveAttendance(
-                    date: DateTime.now(),
-                    startedAttendance: true,
-                  );
+                      // date: DateTime.now()
+                      date: DateTime.utc(2022));
                   Get.snackbar(
-                    "Attedance has been started",
+                    "Attedance Has Been Started",
                     'Students can check in now ',
                     colorText: Colors.white,
                     icon: Icon(Icons.person, color: Colors.white),
                     // snackPosition: SnackPosition.BOTTOM,
-                    backgroundColor: Colors.green,
+                    backgroundColor: Color.fromARGB(255, 84, 191, 87),
                   );
                 },
                 child: Column(
@@ -269,7 +270,7 @@ class _admindashboardState extends State<admindashboard> {
   }
 
   Future approveAttendance({
-    bool startedAttendance = false,
+    bool startedAttendance = true,
     required DateTime date,
   }) async {
     await FirebaseFirestore.instance.collection('approveAttendance').add({
