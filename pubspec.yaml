@@ -34,23 +34,47 @@ dependencies:
   firebase_core: null
   flutter:
     sdk: flutter
+  
   flutter_staggered_grid_view: null
   get: null
   getxbottombar: null
+  google_fonts: ^3.0.1
   http: ^0.13.4
   intl: ^0.17.0
   mysql1: null
   table_calendar: null
 
+
 dev_dependencies:
   flutter_launcher_icons: ^0.9.2
   flutter_test:
     sdk: flutter
+  flutter_native_splash: ^2.2.7
+
+flutter_native_splash:
+
+  # color: "#FFCC00"
+  # color: "#CCDD88"
+  # color: "#ff0000"
+  background_image: "assets/images/gradient_curve.png"
+  image: assets/images/logo.png
+
+  # android_12:
+  # image: assets/images/logo.png
+  # android: true
+  # ios: true
+  # web: true
+
+  # android_gravity: center
+  # ios_content_mode: center
+  # web_image_mode: center
+
+  
 
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/"
+  image_path: "assets/images/logo.png"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -71,7 +95,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/icons/
+    - assets/fonts/
     - assets/images/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -85,6 +109,6 @@ flutter:
   fonts:
     - family: Akshar
       fonts:
-        - asset: assets\fonts\Akshar-VariableFont_wght.ttf
+        # - asset: assets\fonts\Akshar-VariableFont_wght.ttf
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
