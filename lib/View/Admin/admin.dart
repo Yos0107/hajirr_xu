@@ -1,12 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hajirr_xu/addRemoveStudents.dart/addStudent.dart';
-
 import 'package:hajirr_xu/drawer.dart/adminDrawer.dart';
-import 'package:intl/intl.dart';
+
+
 
 class admindashboard extends StatefulWidget {
   const admindashboard({Key? key}) : super(key: key);
@@ -107,7 +106,8 @@ class _admindashboardState extends State<admindashboard> {
                 onPressed: () {
                   approveAttendance(
                       // date: DateTime.now()
-                      date: DateTime.utc(2022));
+                      date: DateTime.utc(2022)
+                      );
                   Get.snackbar(
                     "Attedance Has Been Started",
                     'Students can check in now ',
@@ -199,13 +199,19 @@ class _admindashboardState extends State<admindashboard> {
                     )
                   ],
                 )),
-            ElevatedButton(
-                style: ElevatedButton.styleFrom(
+            
+           ElevatedButton(
+             style: ElevatedButton.styleFrom(
                   onPrimary: Colors.white,
                   primary: Color(0xFF4F5D75),
                 ),
-                onPressed: () {},
-                child: Column(
+              onPressed: (){
+              // AttendanceHistory();
+                  // Navigator.pushNamed(context, 'todaysAttendance');
+                  Get.toNamed('/todaysAttendance');
+
+            }, 
+            child:  Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     Icon(
@@ -219,7 +225,9 @@ class _admindashboardState extends State<admindashboard> {
                       textAlign: TextAlign.center,
                     )
                   ],
-                )),
+                )
+            
+            ),
             ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   onPrimary: Colors.white,

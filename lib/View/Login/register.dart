@@ -225,5 +225,7 @@ Future addUserDetails(
     'email address': emailAddress,
     'full name': fullName,
     'section': section,
-  });
+  }
+  );
 }
+

@@ -1,11 +1,12 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hajirr_xu/Student/attendanceHistory.dart';
 import 'package:hajirr_xu/View/Login/login.dart';
 import 'package:hajirr_xu/View/Login/register.dart';
 import 'package:hajirr_xu/app/bindingss/dailyAttendanceBindings.dart';
+import 'package:hajirr_xu/app/bindingss/presentStudent.dart';
 import 'package:hajirr_xu/app/bindingss/removeStudentBinding.dart';
+import 'package:hajirr_xu/attendanceHistory.dart';
 import 'package:hajirr_xu/info.dart';
 import 'package:hajirr_xu/logic/Models/mysql.dart';
 import 'View/Admin/admin.dart';
@@ -34,18 +35,15 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/login', page: () => MyLogin()),
         GetPage(name: '/register', page: () => MyRegister()),
         GetPage(name: '/forgot', page: () => ForgotPassword()),
-        GetPage(
-            name: '/student',
-            page: () => StudentDashBoard(),
+        GetPage(name: '/student',page: () => StudentDashBoard(),
             bindings: [DailyAttendanceBinding()]),
         GetPage(name: '/admin', page: () => admindashboard()),
         GetPage(name: '/info', page: () => info()),
-        GetPage(name: '/history', page: () => AttendanceHistory()),
-        GetPage(
-          name: '/removeStudents',
-          page: () => RemoveStudents(),
+        GetPage(name: '/removeStudents',page: () => RemoveStudents(),
           bindings: [RemoveStudentBinding()],
         ),
+        GetPage(name: '/todaysAttendance', page: () => TodaysAttendance(),
+          bindings: [PresentStudentBinding()])
       ],
       // routes: {
       //   'login': (context) => MyLogin(),

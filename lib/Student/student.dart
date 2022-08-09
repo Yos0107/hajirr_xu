@@ -1,8 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hajirr_xu/app/controller/dailyAttendanceController.dart';
 import 'package:hajirr_xu/drawer.dart/studentDrawer.dart';
+import 'package:hajirr_xu/logic/Models/login_controller.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class StudentDashBoard extends StatelessWidget {
@@ -53,6 +55,9 @@ class StudentDashBoard extends StatelessWidget {
             ),
             ElevatedButton.icon(
                 onPressed: () {
+                  
+                  // addPresentStudents(
+                  //   fullName: loggedInUserName );
                   // dailyAttendanceController.readyForAttendance();
 
                   // print(dailyAttendanceController.readyForAttendance);
@@ -77,7 +82,8 @@ class StudentDashBoard extends StatelessWidget {
             ),
             ElevatedButton.icon(
                 onPressed: () {
-                  Navigator.pushNamed(context, 'history');
+                  // Navigator.pushNamed(context, 'todaysAttendance');
+                  Get.toNamed('/todaysAttendance');
                 },
                 icon: Icon(
                   Icons.refresh,
@@ -85,7 +91,7 @@ class StudentDashBoard extends StatelessWidget {
                   size: 22.0,
                 ),
                 label: Text(
-                  'Attendance History',
+                  'Todays Attendace',
                   style: TextStyle(fontSize: 18, letterSpacing: 1),
                 ),
                 style: ElevatedButton.styleFrom(
@@ -119,4 +125,13 @@ class StudentDashBoard extends StatelessWidget {
           ],
         ));
   }
+}
+
+Future addPresentStudents({
+  required String fullName
+}) async {
+  await FirebaseFirestore.instance.collection('presentStudents').add({
+    'full name' : fullName
+  });
+
 }
