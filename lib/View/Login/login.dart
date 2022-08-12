@@ -1,8 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hajirr_xu/Student/student.dart';
 import 'package:hajirr_xu/logic/Models/login_controller.dart';
 
 class MyLogin extends StatefulWidget {
@@ -116,9 +114,6 @@ class _MyLoginState extends State<MyLogin> {
                     ElevatedButton.icon(
                         onPressed: () async {
                           if (_formKey.currentState!.validate()) {
-                            // If the form is valid, display a snackbar. In the real world,
-                            // you'd often call a server or save the information in a database.
-
                             final usercredential =
                                 await _firebaseAuth.signInWithEmailAndPassword(
                                     email: emailController.text,
@@ -136,14 +131,7 @@ class _MyLoginState extends State<MyLogin> {
                               snackPosition: SnackPosition.BOTTOM,
                               backgroundColor: Colors.green,
                             );
-                            // ScaffoldMessenger.of(context).showSnackBar(
-                            //   SnackBar(
-                            //     content:
-                            //         Text('Logged in as ' + email.toString()),
-                            //     backgroundColor: Colors.green,
-                            //     behavior: SnackBarBehavior.floating,
-                            //   ),
-                            // );
+                     
                             Get.toNamed('/student');
                             // Navigator.pushNamed(context, 'student');
                           } else {
@@ -186,7 +174,7 @@ class _MyLoginState extends State<MyLogin> {
                       },
                       child: Text('Create Account',
                           style: TextStyle(
-                              // decoration: TextDecoration.underline,
+               
                               fontSize: 18,
                               color: Colors.white))),
                   TextButton(
@@ -195,7 +183,7 @@ class _MyLoginState extends State<MyLogin> {
                       },
                       child: Text('Forgot Password',
                           style: TextStyle(
-                              // decoration: TextDecoration.underline,
+                              
                               fontSize: 18,
                               color: Colors.white)))
                 ],

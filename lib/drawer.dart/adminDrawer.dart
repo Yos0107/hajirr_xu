@@ -64,17 +64,6 @@ class _adminDrawerState extends State<adminDrawer> {
             style: TextStyle(color: Colors.white, fontSize: 14),
           ),
         ),
-        // ListTile(
-        //   leading: Icon(
-        //     Icons.list_rounded,
-        //     color: Color(0xFF081C15),
-        //   ),
-        //   title: Text(
-        //     'Attendance History',
-        //     style: TextStyle(color: Color(0xFF081C15), fontSize: 16),
-        //   ),
-        //   onTap: () => print('Hello'),
-        // ),
         ListTile(
           leading: Icon(Icons.info_outline, color: Color(0xFF081C15)),
           title: Text('Info',

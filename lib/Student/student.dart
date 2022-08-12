@@ -2,26 +2,19 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hajirr_xu/app/controller/dailyAttendanceController.dart';
+import 'package:hajirr_xu/app/controller/presentStudentController.dart';
 import 'package:hajirr_xu/drawer.dart/studentDrawer.dart';
-import 'package:hajirr_xu/logic/Models/login_controller.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class StudentDashBoard extends StatelessWidget {
   StudentDashBoard({Key? key}) : super(key: key);
-
-  final dailyAttendanceController =
-      Get.find<GenerateTodaysAttendanceController>();
-  printF() {
-    print(dailyAttendanceController.readyForAttendance);
-  }
+  final PresentStudentController presentStudentController = Get.find<PresentStudentController>();
 
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
-    dailyAttendanceController.readyforAttendance();
-    printF();
+    
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -55,12 +48,8 @@ class StudentDashBoard extends StatelessWidget {
             ),
             ElevatedButton.icon(
                 onPressed: () {
+                 
                   
-                  // addPresentStudents(
-                  //   fullName: loggedInUserName );
-                  // dailyAttendanceController.readyForAttendance();
-
-                  // print(dailyAttendanceController.readyForAttendance);
                 },
                 icon: Icon(
                   Icons.arrow_right,
@@ -127,11 +116,5 @@ class StudentDashBoard extends StatelessWidget {
   }
 }
 
-Future addPresentStudents({
-  required String fullName
-}) async {
-  await FirebaseFirestore.instance.collection('presentStudents').add({
-    'full name' : fullName
-  });
 
-}
+

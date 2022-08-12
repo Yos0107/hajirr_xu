@@ -2,7 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hajirr_xu/addRemoveStudents.dart/addStudent.dart';
+import 'package:hajirr_xu/AddRemoveStudents.dart/addStudent.dart';
+import 'package:hajirr_xu/app/controller/presentStudentController.dart';
+
 import 'package:hajirr_xu/drawer.dart/adminDrawer.dart';
 
 
@@ -17,7 +19,7 @@ class admindashboard extends StatefulWidget {
 }
 
 class _admindashboard extends StatefulWidget {
-  const _admindashboard({Key? key}) : super(key: key);
+   _admindashboard({Key? key}) : super(key: key);
 
   @override
   State<admindashboard> createState() => _admindashboardState();
@@ -25,6 +27,8 @@ class _admindashboard extends StatefulWidget {
 
 class _admindashboardState extends State<admindashboard> {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  PresentStudentController controller = Get.find();
+
 
   @override
   Widget build(BuildContext context) {
@@ -104,10 +108,8 @@ class _admindashboardState extends State<admindashboard> {
                   primary: Color(0xFF4F5D75),
                 ),
                 onPressed: () {
-                  approveAttendance(
-                      // date: DateTime.now()
-                      date: DateTime.utc(2022)
-                      );
+                 
+                  controller. presentToday();
                   Get.snackbar(
                     "Attedance Has Been Started",
                     'Students can check in now ',
@@ -206,8 +208,7 @@ class _admindashboardState extends State<admindashboard> {
                   primary: Color(0xFF4F5D75),
                 ),
               onPressed: (){
-              // AttendanceHistory();
-                  // Navigator.pushNamed(context, 'todaysAttendance');
+            
                   Get.toNamed('/todaysAttendance');
 
             }, 
@@ -286,4 +287,16 @@ class _admindashboardState extends State<admindashboard> {
       'takeAttendance': startedAttendance,
     });
   }
+}
+
+Future teacherStarts(
+  {
+   required bool value,
+    required String studentName,
+  }
+) async {
+  await FirebaseFirestore.instance.collection('startAttendance').add({
+    'started': value,
+    'studentName': studentName
+  });
 }

@@ -219,12 +219,14 @@ class _MyRegisterState extends State<MyRegister> {
 
 Future addUserDetails(
     {required String fullName,
+    bool? status,
     required String section,
     required String emailAddress}) async {
   await FirebaseFirestore.instance.collection('users').add({
     'email address': emailAddress,
     'full name': fullName,
     'section': section,
+    'status' : '',
   }
   );
 }

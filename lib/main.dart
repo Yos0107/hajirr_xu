@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hajirr_xu/AddRemoveStudents.dart/removeStudents.dart';
 import 'package:hajirr_xu/View/Login/login.dart';
 import 'package:hajirr_xu/View/Login/register.dart';
 import 'package:hajirr_xu/app/bindingss/dailyAttendanceBindings.dart';
@@ -12,7 +13,7 @@ import 'package:hajirr_xu/logic/Models/mysql.dart';
 import 'View/Admin/admin.dart';
 import 'View/Login/forgot.dart';
 import 'Student/student.dart';
-import 'addRemoveStudents.dart/removeStudents.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/register', page: () => MyRegister()),
         GetPage(name: '/forgot', page: () => ForgotPassword()),
         GetPage(name: '/student',page: () => StudentDashBoard(),
-            bindings: [DailyAttendanceBinding()]),
+            bindings: [PresentStudentBinding()]),
         GetPage(name: '/admin', page: () => admindashboard()),
         GetPage(name: '/info', page: () => info()),
         GetPage(name: '/removeStudents',page: () => RemoveStudents(),
