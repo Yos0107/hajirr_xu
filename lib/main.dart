@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:hajirr_xu/AddRemoveStudents.dart/removeStudents.dart';
 import 'package:hajirr_xu/View/Login/login.dart';
 import 'package:hajirr_xu/View/Login/register.dart';
-import 'package:hajirr_xu/app/bindingss/dailyAttendanceBindings.dart';
 import 'package:hajirr_xu/app/bindingss/presentStudent.dart';
 import 'package:hajirr_xu/app/bindingss/removeStudentBinding.dart';
 import 'package:hajirr_xu/attendanceHistory.dart';

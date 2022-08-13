@@ -55,6 +55,7 @@ class _TodaysAttendanceState extends State<TodaysAttendance> {
                   ),
                   Expanded(
                     flex: 3,
+                    // child: Text(presentStudentController.studentPresentToday[index]['value']),
                     child: isPresent == true
                           ? Icon(Icons.check, color: Colors.green,)
                           : Icon(Icons.close, color: Colors.red,)

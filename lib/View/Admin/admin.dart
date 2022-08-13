@@ -35,7 +35,7 @@ class _admindashboardState extends State<admindashboard> {
     return Scaffold(
       appBar: new AppBar(
         centerTitle: true,
-        // automaticallyImplyLeading: false,
+       
         title: Text(
           'Admin Dashboard',
           style: TextStyle(fontSize: 24),
@@ -115,7 +115,6 @@ class _admindashboardState extends State<admindashboard> {
                     'Students can check in now ',
                     colorText: Colors.white,
                     icon: Icon(Icons.person, color: Colors.white),
-                    // snackPosition: SnackPosition.BOTTOM,
                     backgroundColor: Color.fromARGB(255, 84, 191, 87),
                   );
                 },

@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:hajirr_xu/logic/Models/login_controller.dart';
 
 class PresentStudentController extends GetxController{
   var studentPresentToday = [].obs;
@@ -14,7 +15,13 @@ class PresentStudentController extends GetxController{
 
     FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-    await _firestore.collection('users').get().then((value){
+    await _firestore
+    .collection('users')
+    .orderBy('full name', descending: false)
+    // .where("user", isEqualTo:  loggedInUserName,)
+    // .where("value", isEqualTo: false)
+    .get()
+    .then((value){
       value.docs.forEach((element) => {
         studentPresentToday.add(element),
         print(element.id)

@@ -19,7 +19,7 @@ class _studentDrawerState extends State<studentDrawer> {
 //get docIDs
 
   UserData() async {
-    String nam;
+    // String nam;
     FirebaseFirestore _firestore = FirebaseFirestore.instance;
     await _firestore
         .collection('users')
