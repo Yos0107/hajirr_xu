@@ -10,7 +10,14 @@ String loggedInEmail = "".obs as String;
 String loggedInUserName = "".obs as String;
 
 
+//for student attendance
+String studentName = "".obs as String;
+bool isPresent =  "".obs as bool;
 
+
+
+var studentId = "".obs as String;
+var presentStudents = "".obs as String;
 
 
 

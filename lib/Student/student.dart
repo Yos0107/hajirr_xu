@@ -3,7 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hajirr_xu/app/controller/presentStudentController.dart';
+// import 'package:hajirr_xu/app/controller/presentStudentController.dart';
 import 'package:hajirr_xu/drawer.dart/studentDrawer.dart';
+import 'package:hajirr_xu/logic/Models/login_controller.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class StudentDashBoard extends StatelessWidget {
@@ -12,6 +14,10 @@ class StudentDashBoard extends StatelessWidget {
 
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
+  @override
+  void initState(){
+    showName();
+  }
   @override
   Widget build(BuildContext context) {
     
@@ -48,8 +54,19 @@ class StudentDashBoard extends StatelessWidget {
             ),
             ElevatedButton.icon(
                 onPressed: () {
-                 
-                  
+              // showName();
+                  // isPresent = true;
+                  // print(isPresent);
+                  updateStatus();
+                  Get.snackbar(
+                                  "Your Attedance has been recorded successfully",
+                                  'Thank you for attending class',
+                                  colorText: Colors.white,
+                                  icon: Icon(Icons.check, color: Colors.white, size: 35,),
+                                  snackPosition: SnackPosition.BOTTOM,
+                                  backgroundColor: Colors.green,
+                                );
+            
                 },
                 icon: Icon(
                   Icons.arrow_right,
@@ -117,4 +134,33 @@ class StudentDashBoard extends StatelessWidget {
 }
 
 
+showName() async {
+  // var iCard;
+  FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  await _firestore
+  .collection('users')
+  .where("email address", isEqualTo: email)
+  .get()
+  .then((value) {
+    value.docs.forEach((element) =>{
+      // loggedInEmail = element['email address'],
+      studentName = element['full name'],
+      print(element['full name']),
+      print(element.id),
+      studentId = element.id
+    }   
+    );
+  });
+}
+Future<void> updateStatus() async {
+                  var stdId = studentId;
+                  FirebaseFirestore _firestore = FirebaseFirestore.instance;
+                  await _firestore
+                  .collection('users')
+                  .doc(stdId)
+                  .update({
+                    'status' : true,
+                  });
+
+                  }
 

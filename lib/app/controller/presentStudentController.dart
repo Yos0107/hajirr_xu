@@ -17,7 +17,7 @@ class PresentStudentController extends GetxController{
 
     await _firestore
     .collection('users')
-    .orderBy('full name', descending: false)
+    // .orderBy('full name', descending: false)
     // .where("user", isEqualTo:  loggedInUserName,)
     // .where("value", isEqualTo: false)
     .get()
@@ -33,4 +33,24 @@ class PresentStudentController extends GetxController{
 
 
   }
+
+
+  alreadyStarted() async {
+
+  FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  await _firestore
+  .collection('users')
+  .where("email address", isEqualTo: email)
+  .get()
+  .then((value) {
+    value.docs.forEach((element) =>{
+      // loggedInEmail = element['email address'],
+      presentStudents = element['status'],
+      print(element['status']),
+      print(element.id),
+      presentStudents = element.id
+    }   
+    );
+  });
+}
 }

@@ -208,7 +208,8 @@ class _admindashboardState extends State<admindashboard> {
                 ),
               onPressed: (){
             
-                  Get.toNamed('/todaysAttendance');
+                  // Get.toNamed('/todaysAttendance');
+                  
 
             }, 
             child:  Column(

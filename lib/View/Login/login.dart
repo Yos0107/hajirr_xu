@@ -127,7 +127,7 @@ class _MyLoginState extends State<MyLogin> {
                               "Welcome to Hajirr Xu",
                               'Logged in as ' + email.toString(),
                               colorText: Colors.white,
-                              icon: Icon(Icons.person, color: Colors.white),
+                              icon: Icon(Icons.person, color: Colors.white, size: 35,),
                               snackPosition: SnackPosition.BOTTOM,
                               backgroundColor: Colors.green,
                             );

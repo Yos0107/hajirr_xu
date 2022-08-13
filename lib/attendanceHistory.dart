@@ -22,6 +22,8 @@ class _TodaysAttendanceState extends State<TodaysAttendance> {
   @override
   Widget build(BuildContext context) {
     presentStudentController.presentToday();
+    presentStudentController.alreadyStarted();
+    
 
     return Scaffold(
       appBar: AppBar(
@@ -56,10 +58,12 @@ class _TodaysAttendanceState extends State<TodaysAttendance> {
                   Expanded(
                     flex: 3,
                     // child: Text(presentStudentController.studentPresentToday[index]['value']),
-                    child: isPresent == true
-                          ? Icon(Icons.check, color: Colors.green,)
-                          : Icon(Icons.close, color: Colors.red,)
-                  
+                    // child: isPresent == true
+                    //       ? Icon(Icons.check, color: Colors.green,)
+                    //       : Icon(Icons.close, color: Colors.red,)
+                    child: presentStudentController.alreadyStarted() == true
+                            ? Icon(Icons.check, color: Colors.green,)
+                            : Icon(Icons.close, color: Colors.red,)
 
                     )
               ]),

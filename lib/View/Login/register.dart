@@ -170,7 +170,7 @@ class _MyRegisterState extends State<MyRegister> {
                                   "Your Account has been created successfully",
                                   ' Now you can take attendance',
                                   colorText: Colors.white,
-                                  icon: Icon(Icons.person, color: Colors.white),
+                                  icon: Icon(Icons.person, color: Colors.white, size: 35,),
                                   snackPosition: SnackPosition.BOTTOM,
                                   backgroundColor: Colors.green,
                                 );
@@ -219,14 +219,17 @@ class _MyRegisterState extends State<MyRegister> {
 
 Future addUserDetails(
     {required String fullName,
-    bool? value,
+    bool? status,
     required String section,
     required String emailAddress}) async {
-  await FirebaseFirestore.instance.collection('users').add({
+  await FirebaseFirestore
+  .instance
+  .collection('users')
+  .add({
     'email address': emailAddress,
     'full name': fullName,
     'section': section,
-    'status' : value,
+    'status' : status,
   }
   );
 }
