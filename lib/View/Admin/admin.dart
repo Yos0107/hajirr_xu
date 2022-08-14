@@ -108,8 +108,8 @@ class _admindashboardState extends State<admindashboard> {
                   primary: Color(0xFF4F5D75),
                 ),
                 onPressed: () {
-                 
-                  controller. presentToday();
+                 startAttendance(started: true);
+                  // controller. presentToday();
                   Get.snackbar(
                     "Attedance Has Been Started",
                     'Students can check in now ',
@@ -158,7 +158,9 @@ class _admindashboardState extends State<admindashboard> {
                                 children: [
                                   TextButton(
                                       onPressed: () {
-                                        Navigator.pop(context, 'register');
+                                        stopAttendance();
+                                    Navigator.pop(context);
+
                                       },
                                       child: Text(
                                         'Yes',
@@ -207,8 +209,8 @@ class _admindashboardState extends State<admindashboard> {
                   primary: Color(0xFF4F5D75),
                 ),
               onPressed: (){
-            
-                  // Get.toNamed('/todaysAttendance');
+              
+                  Get.toNamed('/todaysAttendance');
                   
 
             }, 
@@ -278,25 +280,49 @@ class _admindashboardState extends State<admindashboard> {
     );
   }
 
-  Future approveAttendance({
-    bool startedAttendance = true,
-    required DateTime date,
-  }) async {
-    await FirebaseFirestore.instance.collection('approveAttendance').add({
-      'date': date,
-      'takeAttendance': startedAttendance,
-    });
-  }
-}
-
-Future teacherStarts(
-  {
-   required bool value,
-    required String studentName,
-  }
-) async {
-  await FirebaseFirestore.instance.collection('startAttendance').add({
-    'started': value,
-    'studentName': studentName
+ Future startAttendance(
+  {  required bool started}
+ ) async {
+  await FirebaseFirestore
+  .instance
+  .collection("Accept")
+  .add({
+    'started': true
   });
+
+ }
+
+Future<void> stopAttendance() async {
+                 
+                  FirebaseFirestore _firestore = FirebaseFirestore.instance;
+                  await _firestore
+                  .collection("Accept")
+                  .doc("g068DakjjmFO9vcsP1Os")
+                  .update({
+                    'started' : false,
+                  });
+
+                  }
+
+//   Future approveAttendance({
+//     bool startedAttendance = true,
+//     required DateTime date,
+//   }) async {
+//     await FirebaseFirestore.instance.collection('approveAttendance').add({
+//       'date': date,
+//       'takeAttendance': startedAttendance,
+//     });
+//   }
+// }
+
+// Future teacherStarts(
+//   {
+//    required bool value,
+//     required String studentName,
+//   }
+// ) async {
+//   await FirebaseFirestore.instance.collection('startAttendance').add({
+//     'started': value,
+//     'studentName': studentName
+//   });
 }

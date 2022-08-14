@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hajirr_xu/app/controller/presentStudentController.dart';
@@ -54,9 +55,8 @@ class StudentDashBoard extends StatelessWidget {
             ),
             ElevatedButton.icon(
                 onPressed: () {
-              // showName();
-                  // isPresent = true;
-                  // print(isPresent);
+                  
+                  if (buttonActivation() == true){
                   updateStatus();
                   Get.snackbar(
                                   "Your Attedance has been recorded successfully",
@@ -66,6 +66,19 @@ class StudentDashBoard extends StatelessWidget {
                                   snackPosition: SnackPosition.BOTTOM,
                                   backgroundColor: Colors.green,
                                 );
+                  }
+                  else{
+                    Get.snackbar(
+                                  "Attendance has already taken by the teacher",
+                                  'Please be on time',
+                                  colorText: Colors.white,
+                                  icon: Icon(Icons.check, color: Colors.white, size: 35,),
+                                  snackPosition: SnackPosition.BOTTOM,
+                                  backgroundColor: Colors.red,
+                                );
+
+                  }
+                 
             
                 },
                 icon: Icon(
@@ -105,7 +118,7 @@ class StudentDashBoard extends StatelessWidget {
                     primary: Color(0xFF16DB65),
                     minimumSize: Size(350, 45),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)))),
+                    borderRadius: BorderRadius.circular(20)))),
             SizedBox(
               height: 30,
             ),
@@ -163,4 +176,14 @@ Future<void> updateStatus() async {
                   });
 
                   }
+
+buttonActivation() async {
+  FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  await _firestore
+  .collection("Accept")
+  .where('started', isEqualTo: true)
+  .get();
+ 
+}
+
 

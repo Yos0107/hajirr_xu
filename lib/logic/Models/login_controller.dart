@@ -13,6 +13,7 @@ String loggedInUserName = "".obs as String;
 //for student attendance
 String studentName = "".obs as String;
 bool isPresent =  "".obs as bool;
+bool isStarted = "".obs as bool;
 
 
 
